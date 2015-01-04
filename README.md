@@ -1,9 +1,10 @@
 dart-appcache
 =============
 
-_A dart transformer to generate an appcache file_
+_A dart transformer to generate an appcache manifest file_
 
-This transformer generates an appcache file with all the project resources and modifies the entry points to reference it.
+This transformer generates an appcache manifest file with all the project resources and modifies the entry points to reference it.
+The appcache manifest is only generated in release mode
 
 # Configuring
     
