@@ -45,7 +45,6 @@ class AppCacheTransformer extends AggregateTransformer {
     options.network = _settings2List(args["network"], "network");
     options.fallback = _settings2List(args["fallback"], "fallback");
     options.debug = settings.mode.name == "debug";
-    print("DEBUG*******************${options.debug}");
     return options;
   }
 
