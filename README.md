@@ -7,9 +7,11 @@ This transformer generates an appcache file with all the project resources and m
 
 # Configuring
     
-Add the transformer to your pubspec.yaml:
+Add the transformer to your pubspec.yaml as the last build step:
 
     transformers:
+    - polymer
+    - $dart2js
     - appcache
         entry_points: web/index.html
     
