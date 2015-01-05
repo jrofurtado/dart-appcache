@@ -61,9 +61,12 @@ class AppCacheTransformer extends AggregateTransformer {
         var buffer = new StringBuffer()
             ..writeln('CACHE MANIFEST')
             ..writeln('#Generated: ${new DateTime.now()}')
-            ..writeln('CACHE:');        
+            ..writeln('CACHE:');
         for (var i in options.cache) {
           if (i.startsWith("web/")) buffer.writeln(i.substring(4)); else buffer.writeln(i);
+        }
+        for (var i in assets) {
+          buffer.writeln(i.id.path.substring(4));
         }
         buffer.writeln('NETWORK:');
         if (options.network.isEmpty) {
