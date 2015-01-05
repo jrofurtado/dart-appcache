@@ -6,7 +6,6 @@ import 'package:html5lib/parser.dart';
 
 class TransformOptions {
   List<String> entryPoints;
-  List<String> exclude;
   List<String> cache;
   List<String> network;
   List<String> fallback;
@@ -40,7 +39,6 @@ class AppCacheTransformer extends AggregateTransformer {
     var args = settings.configuration;
     TransformOptions options = new TransformOptions();
     options.entryPoints = _settings2List(args["entry_points"], "entry_points");
-    options.exclude = _settings2List(args["exclude"], "exclude");
     options.cache = _settings2List(args["cache"], "cache");
     options.network = _settings2List(args["network"], "network");
     options.fallback = _settings2List(args["fallback"], "fallback");
@@ -63,12 +61,9 @@ class AppCacheTransformer extends AggregateTransformer {
         var buffer = new StringBuffer()
             ..writeln('CACHE MANIFEST')
             ..writeln('#Generated: ${new DateTime.now()}')
-            ..writeln('CACHE:');
+            ..writeln('CACHE:');        
         for (var i in options.cache) {
           if (i.startsWith("web/")) buffer.writeln(i.substring(4)); else buffer.writeln(i);
-        }
-        for (var i in assets) {
-          buffer.writeln(i.id.path.substring(4));
         }
         buffer.writeln('NETWORK:');
         if (options.network.isEmpty) {
@@ -104,9 +99,6 @@ class AppCacheTransformer extends AggregateTransformer {
     }
     if (id.path.endsWith("appcache")) return null;
     if (!id.path.startsWith("web/")) return null;
-    for (var i in options.exclude) {
-      if (id.path.startsWith(i)) return null;
-    }
     return "cache";
   }
 }

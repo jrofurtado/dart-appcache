@@ -8,13 +8,15 @@ The appcache manifest is only generated in release mode
 
 # Configuring
     
-Add the transformer to your pubspec.yaml as the last build step:
+Add the transformer to your pubspec.yaml:
 
     transformers:
-    - polymer
-    - $dart2js
-    - appcache
+    - appcache:
+        $exclude: ["**.dart"]
         entry_points: web/index.html
+        cache:
+          - web/index.html_bootstrap.dart.js
+        
     
 (Assuming you already added this package to your pubspec.yaml file.)
 
@@ -24,10 +26,8 @@ Add the transformer to your pubspec.yaml as the last build step:
 
     transformers:
     - appcache:
+        $exclude: ["file1", "dir1", "**.dart"]
         entry_points: web/index.html
-        exclude:
-          - web/file1
-          - web/dir1
 
 ## Specify a list of urls that should also be cached
 
@@ -35,6 +35,7 @@ Add the transformer to your pubspec.yaml as the last build step:
     - appcache:
         entry_points: web/index.html
         cache:
+          - web/index.html_bootstrap.dart.js
           - web/packages/web_components/webcomponents.min.js
           - web/packages/web_components/dart_support.js
           - web/packages/polymer/src/js/polymer/polymer.min.js
