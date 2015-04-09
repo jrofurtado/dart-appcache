@@ -6,6 +6,10 @@ _A dart transformer to generate an appcache manifest file_
 This transformer generates an appcache manifest file with all the project resources and modifies the entry points to reference it.
 The appcache manifest is only generated in release mode
 
+# Changelog
+
+0.1.2 Added support for caching files in lib folder
+
 # Configuring
     
 Add the transformer to your pubspec.yaml:
