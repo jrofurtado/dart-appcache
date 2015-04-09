@@ -65,8 +65,8 @@ class AppCacheTransformer extends AggregateTransformer {
         for (var i in options.cache) {
           if (i.startsWith("web/")) buffer.writeln(i.substring(4)); else buffer.writeln(i);
         }
-        for (var i in assets) {
-          buffer.writeln(i.id.path.substring(4));
+        for (Asset i in assets) {
+          if(i.id.path.startsWith("lib/")) buffer.writeln("packages/${i.id.package}/" + i.id.path.substring(4)); else buffer.writeln(i.id.path.substring(4));
         }
         buffer.writeln('NETWORK:');
         if (options.network.isEmpty) {
@@ -101,7 +101,7 @@ class AppCacheTransformer extends AggregateTransformer {
       if (id.path == i) return "entry-points";
     }
     if (id.path.endsWith("appcache")) return null;
-    if (!id.path.startsWith("web/")) return null;
+    if (!(id.path.startsWith("web/") || id.path.startsWith("lib/"))) return null;
     return "cache";
   }
 }
