@@ -1,11 +1,11 @@
 name: appcache
-version: 0.1.3
+version: 0.1.4
 author: João Furtado <jrofurtado@gmail.com>
 description: A transformer to generate an appcache file
 homepage: https://github.com/jrofurtado/dart-appcache
 dependencies:
-  barback: '>=0.15.2+2 <0.16.0'
-  code_transformers: '>=0.3.0 <0.4.0'
+  barback: any
+  code_transformers: any
   html5lib: any
 transformers:
 - appcache
