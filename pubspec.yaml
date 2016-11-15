@@ -6,6 +6,6 @@ homepage: https://github.com/jrofurtado/dart-appcache
 dependencies:
   barback: '>=0.15.2+2 <0.16.0'
   code_transformers: '>=0.3.0 <0.4.0'
-  html5lib: any
+  html: any
 transformers:
 - appcache

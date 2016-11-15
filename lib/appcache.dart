@@ -2,7 +2,7 @@ library appcache;
 
 import 'package:barback/barback.dart';
 import 'dart:async' show Future;
-import 'package:html5lib/parser.dart';
+import 'package:html/parser.dart';
 
 class TransformOptions {
   List<String> entryPoints;
